@@ -1,5 +1,5 @@
 # Use Ubuntu as the base image
-FROM ubuntu:latest
+FROM ubuntu:24.10
 
 # Define build argument for the LunarDB version
 ARG LUNAR_VERSION=0.1.6
