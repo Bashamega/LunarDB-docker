@@ -1,7 +1,7 @@
 # Use Ubuntu as the base image
 FROM ubuntu:24.10
 
-# Install dependencies, including Lua 5.4
+# Install dependencies, including Lua 5.4 and other required tools
 RUN apt-get update && \
     apt-get install -y wget tar lua5.4 liblua5.4-0
 
@@ -11,6 +11,15 @@ RUN wget -O lunardb.tar.gz "https://github.com/Kazooki123/LunarDB/archive/refs/t
     rm lunardb.tar.gz && \
     chmod +x /usr/local/bin/lunar && \
     ls -l /usr/local/bin
+
+# Create the required modules directory
+RUN mkdir -p /usr/local/bin/modules
+
+# Verify directory contents
+RUN ls -l /usr/local/bin && ls -l /usr/local/bin/modules
+
+# Set the working directory to /usr/local/bin
+WORKDIR /usr/local/bin
 
 # Set the entrypoint to LunarDB
 ENTRYPOINT ["/usr/local/bin/lunar"]
