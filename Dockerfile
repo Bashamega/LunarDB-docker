@@ -13,13 +13,11 @@ RUN wget -O lunardb.tar.gz "https://github.com/Kazooki123/LunarDB/archive/refs/t
     ls -l /usr/local/bin
 
 # Create the required modules directory
-RUN mkdir -p /usr/local/bin/modules
+RUN mkdir -p /modules
 
 # Verify directory contents
-RUN ls -l /usr/local/bin && ls -l /usr/local/bin/modules
+RUN ls -l /usr/local/bin && ls -l /modules
 
-# Set the working directory to /usr/local/bin
-WORKDIR /usr/local/bin
 
 # Set the entrypoint to LunarDB
 ENTRYPOINT ["/usr/local/bin/lunar"]
